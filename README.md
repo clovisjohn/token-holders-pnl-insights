@@ -36,3 +36,4 @@ python main.py
 ## Important
 As of now, the program only works with Camelot AMM
 
+The program fetches raw data from the camelot subgraph which slows it down, I recommend no more than 5000 holders.
