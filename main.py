@@ -4,7 +4,7 @@ from holders_info import get_results
 from tkinter_gui import update_progress,output_csv,display_results,app,user_addresses,pair_address_entry,input_frame,result_label,progress,output_csv_var,table_frame
 
 def start_program():
-    pair_address_ = pair_address_entry.get()
+    pair_address_ = pair_address_entry.get().lower()
     
     file_path = user_addresses.get()
     with open(file_path, "r") as file:
