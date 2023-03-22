@@ -1,4 +1,3 @@
-import csv
 import pandas as pd
 from api_requests import send_query, get_dexscreener_price_usd
 from queries import query_sales, query_buys
