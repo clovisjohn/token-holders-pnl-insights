@@ -33,7 +33,7 @@ def update_progress(value):
     progress.update()
 
 app = tk.Tk()
-app.title("Token Info")
+app.title("Holders Analysis")
 
 # Configure the row and column weights of the app
 app.grid_rowconfigure(0, weight=1)

@@ -17,20 +17,20 @@ def get_results(address_list, pair_address, progress_callback):
         amountUSD_buy_sum = sum([float(swap["amountUSD"]) for swap in buys_response["data"]["pair"]["swaps"]])
 
         item = {
-            "address": address,
-            "amountBuy": round(amount0Out_sum,2),
-            "purchaseUSDAmount": round(amountUSD_buy_sum,2),
-            "amountSold": round(amount0In_sum,2),
-            "saleUSDamount": round(amountUSD_sum,2)
+            "holder": address,
+            "Purchase amount": round(amount0Out_sum,2),
+            "Purchase amount (USD)": round(amountUSD_buy_sum,2),
+            "Sale amount": round(amount0In_sum,2),
+            "Sale amount (USD)": round(amountUSD_sum,2)
         }
-        item["remainingTokens"] = item["amountBuy"] - item["amountSold"]
-        item["remainingTokensWorth"] = round(item["remainingTokens"] * price_usd,2)
-        item["PNL"] = int(item["saleUSDamount"] + item["remainingTokensWorth"] - item["purchaseUSDAmount"])
+        item["Remaining Tokens"] = item["Purchase amount"] - item["Sale amount"]
+        item["Remaining Tokens Worth"] = round(item["Remaining Tokens"] * price_usd,2)
+        item["PNL"] = int(item["Sale amount (USD)"] + item["Remaining Tokens Worth"] - item["Purchase amount (USD)"]) # not exactly pnl
         
-        results.sort(key=lambda x: x["remainingTokensWorth"], reverse=True)
         results.append(item)
-        progress_callback(index + 1)
+        progress_callback(index + 1)  
 
+    results.sort(key=lambda x: x["Remaining Tokens Worth"], reverse=True)
     return results
 
 
