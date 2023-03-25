@@ -23,6 +23,10 @@ def get_results(address_list, pair_address, progress_callback):
             "Sale amount (USD)": round(amountUSD_sum,2)
         }
         item["Remaining Tokens"] = item["Purchase amount"] - item["Sale amount"]
+
+        if item["Remaining Tokens"] < 0 :
+            item["Remaining Tokens"] = 0;
+            
         item["Remaining Tokens Worth"] = round(item["Remaining Tokens"] * price_usd,2)
         item["PNL"] = int(item["Sale amount (USD)"] + item["Remaining Tokens Worth"] - item["Purchase amount (USD)"]) # not exactly pnl
         
